@@ -5,14 +5,19 @@ import json
 import requests
 # python json rpc
 
+# bchd
 URL = "http://127.0.0.1:18556/"
+
+# bchwallet
+# URL = "http://127.0.0.1:18554/"
+
 
 def instruct_wallet(method, params):
     payload = json.dumps({"jsonrpc":"1.0","id":"0","method": method, "params": params})
     headers = {'content-type': "application/json", 'cache-control': "no-cache"}
     try:
         response = requests.request("POST", URL, data=payload, headers=headers, auth=(rpc_user, rpc_password))
-        return json.loads(response.text)
+        print( json.loads(response.text))
     except requests.exceptions.RequestException as e:
         print (e)
     except:
@@ -21,8 +26,10 @@ def instruct_wallet(method, params):
 rpc_user='pat'
 rpc_password='biggestfan'
 
-answer = instruct_wallet('getinfo', [])
-if answer['error'] != None:
-    print (answer['error'])
-else:
-    print( answer['result'])
+# instruct_wallet('getinfo', [])
+instruct_wallet('getbalance', [])
+
+# if answer['error'] != None:
+#     print (answer['error'])
+# else:
+#     print( answer['result'])
