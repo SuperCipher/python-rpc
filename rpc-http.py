@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# pip install requests
 
 import getpass
 import json
