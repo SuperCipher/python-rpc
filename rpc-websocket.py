@@ -14,7 +14,7 @@ def basic_auth_header(username, password):
 
 async def run():
     async with websockets.connect(
-        'ws://127.0.0.1:18556/ws',
+        'ws://127.0.0.1:18332/ws',
         extra_headers=[basic_auth_header('pat', 'biggestfan')],
     ) as websocket:
 
